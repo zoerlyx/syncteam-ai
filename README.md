@@ -52,7 +52,7 @@ Originally initiated as a team project, this version was independently continued
 
 <p align="center">
   <img src="assets/screenshots/dashboard.png" width="48%" alt="Dashboard"/>
-  <img src="assets/screenshots/feature.png" width="48%" alt="Feature Overview"/>
+  <img src="assets/screenshots/feature.png" width="46%" alt="Feature Overview"/>
 </p>
 
 <p align="center">
@@ -61,8 +61,8 @@ Originally initiated as a team project, this version was independently continued
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/invite.png" width="48%" alt="Team Invitation"/>
-  <img src="assets/screenshots/project-add.png" width="48%" alt="Create Project"/>
+  <img src="assets/screenshots/invite.png" width="47%" alt="Team Invitation"/>
+  <img src="assets/screenshots/project add.png" width="49%" alt="Create Project"/>
 </p>
 
 ---

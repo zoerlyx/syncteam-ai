@@ -8,10 +8,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   if (!user) redirect("/login");
 
   const { data: profile } = await supabase
-    .from("profiles")
-    .select("full_name, email")
-    .eq("id", user.id)
-    .single();
+  .from("profiles")
+  .select("full_name")
+  .eq("id", user.id)
+  .single();
 
   const { data: memberIds } = await supabase
     .from("project_members")
@@ -43,10 +43,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   return (
     <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
       <Sidebar
-        projects={allProjects}
-        userName={profile?.full_name ?? user.email ?? "User"}
-        userEmail={profile?.email ?? user.email}
-      />
+  projects={allProjects}
+  userName={profile?.full_name ?? user.email ?? "User"}
+  userEmail={user.email ?? ""}
+/>
       <main style={{ flex: 1, overflowY: "auto", minWidth: 0 }}>
         {children}
       </main>

@@ -7,10 +7,15 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import { createClient } from "@/lib/supabase/client";
 import type { Project } from "@/types";
 
+type SidebarProject = {
+    id: string;
+    name: string;
+};
+
 interface SidebarProps {
-  projects: Project[];
-  userName: string;
-  userEmail?: string;
+    projects: SidebarProject[];
+    userName: string;
+    userEmail?: string;
 }
 
 const NAV_ITEMS = [
@@ -103,7 +108,7 @@ function NavItem({ item, active }: { item: (typeof NAV_ITEMS)[0]; active: boolea
   );
 }
 
-function ProjectItem({ project, active }: { project: Project; active: boolean }) {
+function ProjectItem({ project, active }: { project: SidebarProject; active: boolean }) {
   const [hovered, setHovered] = useState(false);
   const lit = active || hovered;
 

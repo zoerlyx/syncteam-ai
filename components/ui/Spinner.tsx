@@ -1,10 +1,48 @@
-export default function Spinner({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const base =
-  "inline-flex items-center justify-center gap-2 font-semibold tracking-[0.01em] transition-all disabled:opacity-40 disabled:cursor-not-allowed rounded-xl select-none";
+interface SpinnerProps {
+  size?: "sm" | "md" | "lg";
+}
 
-const sizes: Record<string, string> = {
-  sm: "h-10 min-w-[110px] px-4 text-xs",
-  md: "h-12 min-w-[140px] px-6 text-sm",
-  lg: "h-14 min-w-[160px] px-8 text-base",
-};
+export default function Spinner({ size = "md" }: SpinnerProps) {
+  const sizes = {
+    sm: 14,
+    md: 18,
+    lg: 22,
+  };
+
+  return (
+    <svg
+      width={sizes[size]}
+      height={sizes[size]}
+      viewBox="0 0 24 24"
+      fill="none"
+      style={{
+        animation: "spin 0.8s linear infinite",
+        flexShrink: 0,
+      }}
+      aria-hidden="true"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="3"
+        opacity="0.25"
+      />
+      <path
+        d="M22 12A10 10 0 0012 2"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+      />
+
+      <style jsx>{`
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+    </svg>
+  );
 }

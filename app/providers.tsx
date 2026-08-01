@@ -9,25 +9,34 @@ interface ThemeCtx {
   setTheme: (t: Theme) => void;
 }
 
-const ThemeContext = createContext<ThemeCtx>({ theme: "obsidian", setTheme: () => {} });
+const ThemeContext = createContext<ThemeCtx>({
+  theme: "obsidian",
+  setTheme: () => {},
+});
 
-export function Providers({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      return (localStorage.getItem("st-theme") ?? "obsidian") as Theme;
+export function Providers({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [theme, setThemeState] = useState<Theme>("obsidian");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("st-theme") as Theme | null;
+
+    if (saved) {
+      setThemeState(saved);
+      document.documentElement.setAttribute("data-theme", saved);
+    } else {
+      document.documentElement.setAttribute("data-theme", "obsidian");
     }
-    return "obsidian";
-  });
+  }, []);
 
   const setTheme = (t: Theme) => {
     setThemeState(t);
     localStorage.setItem("st-theme", t);
     document.documentElement.setAttribute("data-theme", t);
   };
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

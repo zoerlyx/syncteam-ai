@@ -16,8 +16,63 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SyncTeam — AI Project Management",
-  description: "Kolaborasi tim berbasis AI untuk mahasiswa Teknik Informatika",
+  title: {
+    default: "SyncTeam-AI | AI-Powered Developer Productivity Platform",
+    template: "%s | SyncTeam-AI",
+  },
+
+  description:
+    "An AI-powered project management platform that helps developer teams plan projects, generate tasks, collaborate, and track productivity.",
+
+  keywords: [
+    "AI project management",
+    "developer productivity",
+    "task management",
+    "team collaboration",
+    "Next.js",
+    "Supabase",
+    "Groq AI",
+  ],
+
+  openGraph: {
+    title: "SyncTeam-AI | AI-Powered Developer Productivity Platform",
+
+    description:
+      "Plan projects, generate AI-powered tasks, collaborate with your team, and track productivity.",
+
+    url: "https://syncteam-ai.vercel.app",
+
+    siteName: "SyncTeam-AI",
+
+    images: [
+      {
+        url: "/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "SyncTeam-AI Application Preview",
+      },
+    ],
+
+    locale: "en_US",
+
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title:
+      "SyncTeam-AI | AI-Powered Developer Productivity Platform",
+
+    description:
+      "AI-powered project management platform for developer teams.",
+
+    images: ["/banner.png"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
